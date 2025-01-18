@@ -1,0 +1,18 @@
+services:
+  transactionapi:
+    image: transactionapi:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - .:/app
+    networks:
+      - transaction-network
+
+networks:
+  transaction-network:
+    driver: bridge
